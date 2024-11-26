@@ -18,10 +18,7 @@ import {
 import { BackSide, MathUtils, Mesh } from "three";
 import { ShowroomScene } from "../state";
 
-injectGLTF.preload(() => [
-	"models/cybertruck_scene.glb",
-
-]);
+injectGLTF.preload(() => ["models/cybertruck_scene.glb"]);
 
 const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 
@@ -35,7 +32,7 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 		<ngt-color *args="['#ffffff']" attach="background" />
 		<ngt-group [name]="name" [dispose]="null">
 			<ngts-perspective-camera
-				[options]="{ makeDefault: true, position: [3, 3, 8], near: 0.5 }"
+				[options]="{ makeDefault: true, position: [3, 3, 12], near: 0.5 }"
 			/>
 			<ngts-orbit-controls
 				[options]="{
@@ -43,7 +40,7 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 					enablePan: false,
 					maxPolarAngle: DEG2RAD * 75,
 					minDistance: 6,
-					maxDistance: 10,
+					maxDistance: 20,
 					autoRotateSpeed: 0.5,
 				}"
 			/>
@@ -103,6 +100,26 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 							form: 'circle',
 							intensity: 1,
 							color: 'green',
+							scale: [2, 5],
+							target: [0, 0, 0],
+						}"
+					/>
+					<ngts-lightformer
+						[options]="{
+							position: [-3, 3, 3],
+							form: 'circle',
+							intensity: 1,
+							color: 'purple',
+							scale: [2, 5],
+							target: [0, 0, 0],
+						}"
+					/>
+					<ngts-lightformer
+						[options]="{
+							position: [-5, 3, -3],
+							form: 'circle',
+							intensity: 1,
+							color: 'yellow',
 							scale: [2, 5],
 							target: [0, 0, 0],
 						}"

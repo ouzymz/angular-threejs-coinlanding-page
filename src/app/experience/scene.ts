@@ -54,13 +54,11 @@ export class Scene {
 
 	private store = injectStore();
 	viewport = this.store.select("viewport");
-	camera = this.store.select('camera')
-	constructor(){
-		this.camera().position.set(0,0,15)
-		console.log(this.camera().position)
+	camera = this.store.select("camera");
+	constructor() {
+		this.camera().position.set(0, 0, 15);
+		console.log(this.camera().position);
 	}
 
 	slideDistance = 1;
-
-
 }
