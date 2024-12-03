@@ -1,15 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-
-@import url("https://fonts.googleapis.com/css2?family=Danfo&family=Permanent+Marker&family=Pixelify+Sans:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-	font-family: "Permanent Marker", serif;
-	font-optical-sizing: auto;
-	font-weight: 700;
+	font-family: "Atma", system-ui;
+	font-weight: 400;
 	font-style: normal;
 	color: white;
 }

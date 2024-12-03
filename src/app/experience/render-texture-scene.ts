@@ -4,6 +4,7 @@ import {
 	computed,
 	CUSTOM_ELEMENTS_SCHEMA,
 	input,
+	signal,
 } from "@angular/core";
 import { NgtArgs } from "angular-three";
 import { NgtsPerspectiveCamera } from "angular-three-soba/cameras";
@@ -17,8 +18,9 @@ import {
 } from "angular-three-soba/staging";
 import { BackSide, MathUtils, Mesh } from "three";
 import { ShowroomScene } from "../state";
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-injectGLTF.preload(() => ["models/cybertruck_scene.glb"]);
+injectGLTF.preload(() => ["models/8x-token-with-candles.glb"],{useDraco:true});
 
 const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 
@@ -32,7 +34,7 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 		<ngt-color *args="['#ffffff']" attach="background" />
 		<ngt-group [name]="name" [dispose]="null">
 			<ngts-perspective-camera
-				[options]="{ makeDefault: true, position: [3, 3, 12], near: 0.5 }"
+				[options]="{ makeDefault: true, position:isMobile()? [4, 0, 5]:[3,3,8], near: 0.5 }"
 			/>
 			<ngts-orbit-controls
 				[options]="{
@@ -89,7 +91,7 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 							position: [5, 0, -5],
 							form: 'rect',
 							intensity: 1,
-							color: 'red',
+							color: 'blue',
 							scale: [3, 5],
 							target: [0, 0, 0],
 						}"
@@ -139,7 +141,7 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 							position: [0, 0, 5],
 							form: 'rect',
 							intensity: 1,
-							color: 'purple',
+							color: 'green',
 							scale: [10, 5],
 							target: [0, 0, 0],
 						}"
@@ -162,6 +164,14 @@ const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
 	],
 })
 export class RenderTextureScene {
+	isMobile = signal<boolean>(false)
+	ngOnInit() {
+		if (window.innerWidth <= window.innerHeight) {
+			console.log(window.innerWidth, window.innerHeight);
+			this.isMobile.set(true);
+		} 
+	}
+
 	Math = Math;
 	DEG2RAD = MathUtils.DEG2RAD;
 	BackSide = BackSide;
