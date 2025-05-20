@@ -1,4 +1,4 @@
-"""##  1BMCap - Meme Token Landing Page
+##  1BMCap - Meme Token Landing Page
 
 **1BMCap** is a modern, playful landing page built for a meme token project. Developed with Angular and integrated with Three.js for interactive 3D visuals, the site aims to attract and engage crypto users with a WebGL-powered experience.
 
