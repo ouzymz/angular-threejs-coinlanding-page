@@ -26,4 +26,4 @@
 
 ### 📸 Preview
 
-![demo gif](assets/demo.gif)
+![demo gif](public/demo.gif)
